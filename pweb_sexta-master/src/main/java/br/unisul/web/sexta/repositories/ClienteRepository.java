@@ -6,11 +6,10 @@ import org.springframework.transaction.annotation.Transactional;
 
 import br.unisul.web.sexta.domain.Cliente;
 
-
 @Repository
-public interface ClienteRepository extends JpaRepository<Cliente, Integer>{
-	
-	@Transactional(readOnly=true)
+public interface ClienteRepository extends JpaRepository<Cliente, Integer> {
+
+	@Transactional(readOnly = true)
 	Cliente findByEmail(String email);
 
 }

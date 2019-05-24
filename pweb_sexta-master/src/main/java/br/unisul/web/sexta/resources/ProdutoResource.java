@@ -1,6 +1,5 @@
 package br.unisul.web.sexta.resources;
 
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -17,7 +16,6 @@ import br.unisul.web.sexta.dtos.ProdutoDTO;
 import br.unisul.web.sexta.resources.utils.URL;
 import br.unisul.web.sexta.services.ProdutoService;
 
-
 @RestController
 @RequestMapping(value = "/produtos")
 public class ProdutoResource {
@@ -30,11 +28,9 @@ public class ProdutoResource {
 		Produto obj = service.find(id);
 		return ResponseEntity.ok().body(obj);
 	}
-	
-	
+
 	@RequestMapping(method = RequestMethod.GET)
-	public ResponseEntity<List<ProdutoDTO>> find(
-			@RequestParam(value = "nome", defaultValue = "") String nome,
+	public ResponseEntity<List<ProdutoDTO>> find(@RequestParam(value = "nome", defaultValue = "") String nome,
 			@RequestParam(value = "categorias", defaultValue = "") String categorias) {
 
 		String nomeDecoded = URL.decodeParam(nome);

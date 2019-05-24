@@ -19,12 +19,12 @@ public class ProdutoService {
 
 	@Autowired
 	private CategoriaRepository categoriaRepository;
-	
+
 	public Produto find(Integer id) {
 		Optional<Produto> obj = rep.findById(id);
 		return obj.orElse(null);
 	}
-	
+
 	public List<Produto> search(String nome, List<Integer> ids) {
 		List<Categoria> categorias = categoriaRepository.findAllById(ids);
 		return rep.findDistinctByNomeContainingAndCategoriasIn(nome, categorias);

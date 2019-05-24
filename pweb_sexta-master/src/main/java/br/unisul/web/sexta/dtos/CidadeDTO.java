@@ -4,13 +4,12 @@ import java.io.Serializable;
 
 import br.unisul.web.sexta.domain.Cidade;
 
-
 public class CidadeDTO implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	private Integer id;
 	private String nome;
-	
+
 	public CidadeDTO() {
 	}
 
@@ -18,7 +17,7 @@ public class CidadeDTO implements Serializable {
 		id = obj.getId();
 		nome = obj.getNome();
 	}
-	
+
 	public Integer getId() {
 		return id;
 	}

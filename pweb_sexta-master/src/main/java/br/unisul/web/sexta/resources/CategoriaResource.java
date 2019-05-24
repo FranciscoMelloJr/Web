@@ -18,54 +18,53 @@ import br.unisul.web.sexta.dtos.CategoriaDto;
 import br.unisul.web.sexta.services.CategoriaService;
 
 @RestController
-@RequestMapping(value="/categorias")
+@RequestMapping(value = "/categorias")
 public class CategoriaResource {
-	
+
 	@Autowired
 	private CategoriaService service;
-	
-	//BUSCAR POR ID
-	@RequestMapping(value="/{id}",method=RequestMethod.GET)
-	public ResponseEntity<Categoria> find(@PathVariable Integer id){
+
+	// BUSCAR POR ID
+	@RequestMapping(value = "/{id}", method = RequestMethod.GET)
+	public ResponseEntity<Categoria> find(@PathVariable Integer id) {
 		Categoria obj = service.find(id);
 		return ResponseEntity.ok().body(obj);
 	}
-	
-	//INSERIR
-	@RequestMapping(method=RequestMethod.POST)
-	public ResponseEntity<Void>insert(@RequestBody Categoria obj){
+
+	// INSERIR
+	@RequestMapping(method = RequestMethod.POST)
+	public ResponseEntity<Void> insert(@RequestBody Categoria obj) {
 		obj = service.insert(obj);
-		URI uri = ServletUriComponentsBuilder.fromCurrentRequest().
-				path("/{id}").buildAndExpand(obj.getId()).toUri();
+		URI uri = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").buildAndExpand(obj.getId()).toUri();
 		return ResponseEntity.created(uri).build();
 	}
-	
-	//ATUALIZAR
-	@RequestMapping(value="/{id}", method=RequestMethod.PUT)
-	public ResponseEntity<Void> update(@RequestBody Categoria obj, @PathVariable Integer id){
+
+	// ATUALIZAR
+	@RequestMapping(value = "/{id}", method = RequestMethod.PUT)
+	public ResponseEntity<Void> update(@RequestBody Categoria obj, @PathVariable Integer id) {
 		obj.setId(id);
 		obj = service.update(obj);
 		return ResponseEntity.noContent().build();
 	}
-	
-	//EXCLUIR
-	@RequestMapping(value="/{id}", method=RequestMethod.DELETE)
+
+	// EXCLUIR
+	@RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
 	public ResponseEntity<Void> delete(@PathVariable Integer id) {
 		service.delete(id);
 		return ResponseEntity.noContent().build();
 	}
-		
-	//LISTAR TODAS
-	@RequestMapping(method=RequestMethod.GET)
+
+	// LISTAR TODAS
+	@RequestMapping(method = RequestMethod.GET)
 	public ResponseEntity<List<CategoriaDto>> findAll() {
 		List<Categoria> lista = service.findAll();
-		
+
 		List<CategoriaDto> listDto = new ArrayList<CategoriaDto>();
-		
+
 		for (Categoria c : lista) {
 			listDto.add(new CategoriaDto(c));
 		}
-		
+
 		return ResponseEntity.ok().body(listDto);
 	}
 

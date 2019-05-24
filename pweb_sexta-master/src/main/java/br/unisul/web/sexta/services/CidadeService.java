@@ -8,14 +8,11 @@ import org.springframework.stereotype.Service;
 import br.unisul.web.sexta.domain.Cidade;
 import br.unisul.web.sexta.repositories.CidadeRepository;
 
-
-
 @Service
 public class CidadeService {
-	
+
 	@Autowired
 	private CidadeRepository rep;
-	
 
 	public List<Cidade> findByEstado(Integer estadoId) {
 		return rep.findCidades(estadoId);

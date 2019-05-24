@@ -11,39 +11,37 @@ import br.unisul.web.sexta.repositories.CategoriaRepository;
 
 @Service
 public class CategoriaService {
-	
+
 	@Autowired
 	private CategoriaRepository rep;
-	
-	//BUSCAR POR ID
-	public Categoria find (Integer id) {
+
+	// BUSCAR POR ID
+	public Categoria find(Integer id) {
 		Optional<Categoria> obj = rep.findById(id);
 		return obj.orElse(null);
 	}
-	
-	//FAZ INSERÇÃO
-	public Categoria insert (Categoria obj) {
+
+	// FAZ INSERÇÃO
+	public Categoria insert(Categoria obj) {
 		obj.setId(null);
 		return rep.save(obj);
 	}
-	
-	//ATUALIZAR
-	public Categoria update (Categoria obj) {
+
+	// ATUALIZAR
+	public Categoria update(Categoria obj) {
 		find(obj.getId());
 		return rep.save(obj);
 	}
-	
-	//DELETAR
-	public void delete (Integer id) {
+
+	// DELETAR
+	public void delete(Integer id) {
 		find(id);
 		rep.deleteById(id);
 	}
-	
-	//LISTAR TODAS
-	public List<Categoria> findAll(){
+
+	// LISTAR TODAS
+	public List<Categoria> findAll() {
 		return rep.findAll();
 	}
-	
-
 
 }

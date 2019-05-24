@@ -1,9 +1,8 @@
 package br.unisul.web.sexta.domain.enums;
 
 public enum TipoCliente {
-	
-	PESSOAFISICA(1, "Pessoa Física"),
-	PESSOAJURIDICA(2, "Pessoa Jurídica");
+
+	PESSOAFISICA(1, "Pessoa Física"), PESSOAJURIDICA(2, "Pessoa Jurídica");
 
 	private int cod;
 	private String descricao;
@@ -17,7 +16,7 @@ public enum TipoCliente {
 		return cod;
 	}
 
-	public String getDescricao () {
+	public String getDescricao() {
 		return descricao;
 	}
 

@@ -16,13 +16,12 @@ public class Cidade implements Serializable {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
-	
+
 	private String nome;
 
 	@ManyToOne
 	@JoinColumn(name = "estado_id")
 	private Estado estado;
-	
 
 	public Cidade() {
 	}
@@ -58,7 +57,6 @@ public class Cidade implements Serializable {
 		this.estado = estado;
 	}
 
-	
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -83,6 +81,5 @@ public class Cidade implements Serializable {
 			return false;
 		return true;
 	}
-	
-	
+
 }

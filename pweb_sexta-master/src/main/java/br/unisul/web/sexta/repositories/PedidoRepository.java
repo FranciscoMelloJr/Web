@@ -11,8 +11,8 @@ import br.unisul.web.sexta.domain.Pedido;
 
 @Repository
 public interface PedidoRepository extends JpaRepository<Pedido, Integer> {
-	
-	@Transactional(readOnly=true)
+
+	@Transactional(readOnly = true)
 	List<Pedido> findByCliente(Cliente cliente);
 
 }
