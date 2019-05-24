@@ -54,13 +54,13 @@ public class DbService {
 
 	public void inicializaBancoDeDados() throws ParseException {
 
-		Categoria cat1 = new Categoria(null, "Informática");
-		Categoria cat2 = new Categoria(null, "Alimentício");
-		Categoria cat3 = new Categoria(null, "Modas e acessórios");
-		Categoria cat4 = new Categoria(null, "Eletrônicos");
-		Categoria cat5 = new Categoria(null, "Jogos");
-		Categoria cat6 = new Categoria(null, "Decoração");
-		Categoria cat7 = new Categoria(null, "Perfumaria");
+		Categoria cat1 = new Categoria(null, "Computador DeskTop");
+		Categoria cat2 = new Categoria(null, "HardWare e Periféricos");
+		Categoria cat3 = new Categoria(null, "Modem DSL");
+		Categoria cat4 = new Categoria(null, "Mouse");
+		Categoria cat5 = new Categoria(null, "Notebook e Ultrabook");
+		Categoria cat6 = new Categoria(null, "Redes e Equipamentos");
+		Categoria cat7 = new Categoria(null, "Roteadores");
 
 		Estado e1 = new Estado(null, "Paraná");
 		Estado e2 = new Estado(null, "Santa Catarina");
