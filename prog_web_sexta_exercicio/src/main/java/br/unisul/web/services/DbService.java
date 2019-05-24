@@ -22,20 +22,21 @@ public class DbService {
 
 	public void inicializaBancoDeDados() throws ParseException {
 
-		Aluno aluno1 = new Aluno(null, "Francisco", null);
-		Aluno aluno2 = new Aluno(null, "Lucas", null);
-		Aluno aluno3 = new Aluno(null, "Vitor", null);
+		Aluno aluno1 = new Aluno(null, "Francisco", "francisco@gmail.com");
+		Aluno aluno2 = new Aluno(null, "Lucas", "lucas@gmail.com");
+		Aluno aluno3 = new Aluno(null, "Vitor", "vitor@gmail.com");
 
-		Disciplina disc1 = new Disciplina(null, "Prog Web", null, aluno1);
-		Disciplina disc2 = new Disciplina(null, "Integrais", null, aluno2);
-		Disciplina disc3 = new Disciplina(null, "Grafos", null, aluno3);
+		Disciplina disc1 = new Disciplina(null, "Prog Web", "Primeiro Semestre");
+		Disciplina disc2 = new Disciplina(null, "Integrais", "Segundo Semestre");
+		Disciplina disc3 = new Disciplina(null, "Grafos", "Terceiro Semestre");
 
-		// instanciar cliente.
-		Aluno aluno = new Aluno(null, "Francisco Mello", "franciscomello@gmail.com");
+		aluno1.getDisciplinas().addAll(Arrays.asList(disc1, disc2, disc3));
+		aluno2.getDisciplinas().addAll(Arrays.asList(disc1, disc2));
+		aluno3.getDisciplinas().addAll(Arrays.asList(disc1));
 
-		Disciplina disc = new Disciplina(null, "SAD", "7", aluno);
-
-		aluno1.getDisciplinas().addAll(Arrays.asList(disc1));
+		disc1.getAlunos().addAll(Arrays.asList(aluno1, aluno2, aluno3));
+		disc2.getAlunos().addAll(Arrays.asList(aluno1, aluno2));
+		disc3.getAlunos().addAll(Arrays.asList(aluno1));
 
 		discRep.saveAll(Arrays.asList(disc1, disc2, disc3));
 		aluRep.saveAll(Arrays.asList(aluno1, aluno2, aluno3));

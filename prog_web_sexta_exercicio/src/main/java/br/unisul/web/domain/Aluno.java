@@ -8,7 +8,11 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
 public class Aluno implements Serializable {
@@ -18,11 +22,12 @@ public class Aluno implements Serializable {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
-
 	private String nome;
 	private String email;
 
-	@ManyToMany(mappedBy = "aluno")
+	@JsonIgnore
+	@ManyToMany
+	@JoinTable(name = "ALUNO_DISCIPLINA", joinColumns = @JoinColumn(name = "aluno_id"), inverseJoinColumns = @JoinColumn(name = "disciplina_id"))
 	private List<Disciplina> disciplinas = new ArrayList<>();
 
 	public Aluno() {
@@ -95,5 +100,5 @@ public class Aluno implements Serializable {
 			return false;
 		return true;
 	}
-	
+
 }

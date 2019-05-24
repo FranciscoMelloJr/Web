@@ -1,15 +1,13 @@
 package br.unisul.web.domain;
 
 import java.io.Serializable;
-
+import java.util.ArrayList;
+import java.util.List;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
 import javax.persistence.ManyToMany;
-
-import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
 public class Disciplina implements Serializable {
@@ -17,26 +15,22 @@ public class Disciplina implements Serializable {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-
 	private Integer id;
-
 	private String nome;
 	private String semestre;
 
-	@JsonIgnore
-	@ManyToMany
-	@JoinColumn(name = "aluno_id")
-	private Aluno aluno;
+	@ManyToMany(mappedBy = "disciplinas")
+	private List<Aluno> alunos = new ArrayList<>();
 
 	public Disciplina() {
-	}
 
-	public Disciplina(Integer id, String nome, String semestre, Aluno aluno) {
-		super();
+	}
+	//Inserir alunos array List //
+	public Disciplina(Integer id, String nome, String semestre) {
 		this.id = id;
 		this.nome = nome;
 		this.semestre = semestre;
-		this.aluno = aluno;
+
 	}
 
 	public Integer getId() {
@@ -63,16 +57,12 @@ public class Disciplina implements Serializable {
 		this.semestre = semestre;
 	}
 
-	public Aluno getAluno() {
-		return aluno;
+	public List<Aluno> getAlunos() {
+		return alunos;
 	}
 
-	public void setAluno(Aluno aluno) {
-		this.aluno = aluno;
-	}
-
-	public static long getSerialversionuid() {
-		return serialVersionUID;
+	public void setAlunos(List<Aluno> alunos) {
+		this.alunos = alunos;
 	}
 
 	@Override
@@ -99,5 +89,4 @@ public class Disciplina implements Serializable {
 			return false;
 		return true;
 	}
-
 }

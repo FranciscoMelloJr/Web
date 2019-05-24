@@ -32,21 +32,21 @@ public class ItemPedido implements Serializable {
 		this.quantidade = quantidade;
 		this.preco = preco;
 	}
-
+	
 	public double getSubTotal() {
 		return (preco - desconto) * quantidade;
 	}
 
-	@JsonIgnore
+    @JsonIgnore
 	public Pedido getPedido() {
 		return id.getPedido();
 	}
-
-	public void setPedido(Pedido pedido) {
+    
+    public void setPedido(Pedido pedido) {
 		id.setPedido(pedido);
 	}
-
-	public void setProduto(Produto produto) {
+    
+    public void setProduto(Produto produto) {
 		id.setProduto(produto);
 	}
 
@@ -110,7 +110,7 @@ public class ItemPedido implements Serializable {
 			return false;
 		return true;
 	}
-
+	
 	@Override
 	public String toString() {
 		NumberFormat nf = NumberFormat.getCurrencyInstance(new Locale("pt", "BR"));
@@ -125,5 +125,6 @@ public class ItemPedido implements Serializable {
 		builder.append("\n");
 		return builder.toString();
 	}
+	
 
 }

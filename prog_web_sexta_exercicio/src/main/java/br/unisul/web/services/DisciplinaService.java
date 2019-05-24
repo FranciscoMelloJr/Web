@@ -1,5 +1,6 @@
 package br.unisul.web.services;
 
+import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -39,8 +40,8 @@ public class DisciplinaService {
 	}
 
 	// LISTAR TODAS
-//		public List<Disciplina> findAll(){
-	// return rep.findAllByOrderByNome();
-	// }
+	public List<Disciplina> findAll() {
+		return rep.findAll();
+	}
 
 }

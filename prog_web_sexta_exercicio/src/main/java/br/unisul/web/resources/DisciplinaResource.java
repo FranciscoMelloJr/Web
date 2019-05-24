@@ -1,6 +1,8 @@
 package br.unisul.web.resources;
 
 import java.net.URI;
+import java.util.List;
+import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -12,6 +14,7 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import br.unisul.web.domain.Disciplina;
+import br.unisul.web.dtos.DisciplinaDTO;
 import br.unisul.web.services.DisciplinaService;
 
 @RestController
@@ -52,12 +55,11 @@ public class DisciplinaResource {
 	}
 
 	// LISTAR TODAS
-//	@RequestMapping(method = RequestMethod.GET)
-	// public ResponseEntity<List<DisciplinaDTO>> findAll() {
-	// List<Disciplina> lista = service.findAll();
-	// List<DisciplinaDTO> listaDTO = lista.stream().map(obj -> new
-	// DisciplinaDTO(obj)).collect(Collectors.toList());
-	// return ResponseEntity.ok().body(listaDTO);
-//	}
+	@RequestMapping(method = RequestMethod.GET)
+	public ResponseEntity<List<DisciplinaDTO>> findAll() {
+		List<Disciplina> lista = service.findAll();
+		List<DisciplinaDTO> listaDTO = lista.stream().map(obj -> new DisciplinaDTO(obj)).collect(Collectors.toList());
+		return ResponseEntity.ok().body(listaDTO);
+	}
 
 }

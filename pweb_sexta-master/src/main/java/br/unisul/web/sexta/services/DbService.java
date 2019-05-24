@@ -55,10 +55,10 @@ public class DbService {
 	public void inicializaBancoDeDados() throws ParseException {
 		
 		Categoria cat1 = new Categoria(null, "Informática");
-		Categoria cat2 = new Categoria(null, "Escritório");
-		Categoria cat3 = new Categoria(null, "Cama mesa e banho");
+		Categoria cat2 = new Categoria(null, "Alimentício");
+		Categoria cat3 = new Categoria(null, "Modas e acessórios");
 		Categoria cat4 = new Categoria(null, "Eletrônicos");
-		Categoria cat5 = new Categoria(null, "Jardinagem");
+		Categoria cat5 = new Categoria(null, "Jogos");
 		Categoria cat6 = new Categoria(null, "Decoração");
 		Categoria cat7 = new Categoria(null, "Perfumaria");
 		
@@ -77,11 +77,11 @@ public class DbService {
 		e2.getCidades().addAll(Arrays.asList(c2, c3, c4));
 		e3.getCidades().addAll(Arrays.asList(c5, c6));
 		
-		Cliente cli1 = new Cliente(null, "Clávison Zapelini", "clavison@gmail.com", "80234690968", TipoCliente.PESSOAFISICA);
-		cli1.getTelefones().addAll(Arrays.asList("48999939244", "48988120785"));
+		Cliente cli1 = new Cliente(null, "Francisco de Assis de Mello Junior", "franciscomelloxpe@gmail.com", "08976959570", TipoCliente.PESSOAFISICA);
+		cli1.getTelefones().addAll(Arrays.asList("4832556698", "48996555266"));
 		
-		Endereco en1 = new Endereco(null, "Almir Santos Miranda ", "929", "Apto 402", "Dehon"     , "88704110", cli1, c2);
-		Endereco en2 = new Endereco(null, "Hermínio João Santana", "112", "Casa"    , "Pouso Alto", "88735000", cli1, c3);
+		Endereco en1 = new Endereco(null, "Rosangela Machado ", "110", "Apto 101", "Vila Nova", "88780000", cli1, c2);
+		Endereco en2 = new Endereco(null, "Francisco Mello", "120", "Casa", "Centro", "88780000", cli1, c3);
 		cli1.getEnderecos().addAll(Arrays.asList(en1, en2));
 		
 		estRep.saveAll(Arrays.asList(e1,e2,e3));
@@ -90,9 +90,9 @@ public class DbService {
 		clieRep.saveAll(Arrays.asList(cli1));
 		endRep.saveAll(Arrays.asList(en1, en2));
 		
-		Produto p1 = new Produto(null, "Computador", 2000.00);
-		Produto p2 = new Produto(null, "Impressora", 800.00);
-		Produto p3 = new Produto(null, "Mouse", 80.00);
+		Produto p1 = new Produto(null, "DeskTop", 3000.00);
+		Produto p2 = new Produto(null, "Monitor", 800.00);
+		Produto p3 = new Produto(null, "HeadSet", 250.00);
 		p1.getCategorias().addAll(Arrays.asList(cat1));
 		p2.getCategorias().addAll(Arrays.asList(cat1,cat2));
 		p3.getCategorias().addAll(Arrays.asList(cat1));
