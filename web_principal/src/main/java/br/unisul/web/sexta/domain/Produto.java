@@ -48,6 +48,7 @@ public class Produto implements Serializable {
 		this.preco = preco;
 	}
 
+	//Listar todos os pedidos em que o produto x foi vendido 
 	@JsonIgnore
 	public List<Pedido> getPedidos() {
 		List<Pedido> lista = new ArrayList<>();

@@ -36,7 +36,8 @@ public class Pedido implements Serializable {
 	@ManyToOne
 	@JoinColumn(name = "endereco_de_entrega_id")
 	private Endereco enderecoDeEntrega;
-
+	
+	//Chave composta//
 	@OneToMany(mappedBy = "id.pedido")
 	private Set<ItemPedido> itens = new HashSet<>();
 
@@ -51,6 +52,7 @@ public class Pedido implements Serializable {
 		this.enderecoDeEntrega = enderecoDeEntrega;
 	}
 
+	//Não é um atributo; Valor total não está no pedido// 
 	public double getValorTotal() {
 		double soma = 0.0;
 		for (ItemPedido ip : itens) {
@@ -123,11 +125,15 @@ public class Pedido implements Serializable {
 			return false;
 		return true;
 	}
-
+	
+	
 	@Override
 	public String toString() {
+		//Determina o padrão do número
 		NumberFormat nf = NumberFormat.getCurrencyInstance(new Locale("pt", "BR"));
+		//Formata a data e hora do pedido
 		SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
+		//Retorna todos os dados do pedido concatenando string sem realocar em memória
 		StringBuilder builder = new StringBuilder();
 		builder.append("Pedido número: ");
 		builder.append(getId());
