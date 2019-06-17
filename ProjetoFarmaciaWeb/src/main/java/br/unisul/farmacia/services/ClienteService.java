@@ -38,7 +38,7 @@ public class ClienteService {
 	}
 
 	public Cliente fromDTO(ClienteDTO objDto) {
-		return new Cliente(objDto.getId(), objDto.getNome(), 0);
+		return new Cliente(objDto.getId(), objDto.getNome(), null);
 	}
 
 	private void updateData(Cliente newObj, Cliente obj) {

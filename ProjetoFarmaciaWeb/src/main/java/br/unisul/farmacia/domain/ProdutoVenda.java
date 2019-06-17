@@ -19,21 +19,22 @@ public class ProdutoVenda implements Serializable {
 	private ProdutoVendaPK id = new ProdutoVendaPK();
 
 	private Integer quantidade;
-	private Double preco;
+	private Double valor;
 
 	public ProdutoVenda() {
 	}
 
-	public ProdutoVenda(Venda venda, Produto produto, Integer quantidade, Double preco) {
+	public ProdutoVenda(Venda venda, Produto produto, Integer quantidade) {
 		super();
 		id.setVenda(venda);
 		id.setProduto(produto);
 		this.quantidade = quantidade;
-		this.preco = preco;
+		this.valor = produto.getValor();
+		
 	}
 	
 	public double getSubTotal() {
-		return (preco) * quantidade;
+		return (valor) * quantidade;
 	}
 
 	@JsonIgnore
@@ -41,7 +42,7 @@ public class ProdutoVenda implements Serializable {
 		return id.getVenda();
 	}
 
-	public void setPedido(Venda venda) {
+	public void setVenda(Venda venda) {
 		id.setVenda(venda);
 	}
 
@@ -69,12 +70,12 @@ public class ProdutoVenda implements Serializable {
 		this.quantidade = quantidade;
 	}
 
-	public Double getPreco() {
-		return preco;
+	public Double getValor() {
+		return valor;
 	}
 
-	public void setPreco(Double preco) {
-		this.preco = preco;
+	public void setValor(Double valor) {
+		this.valor = valor;
 	}
 
 	@Override
@@ -110,7 +111,7 @@ public class ProdutoVenda implements Serializable {
 		builder.append(", Qte: ");
 		builder.append(getQuantidade());
 		builder.append(", Preço unitário: ");
-		builder.append(nf.format(getPreco()));
+		builder.append(nf.format(getValor()));
 		builder.append(", Subtotal: ");
 		builder.append(nf.format(getSubTotal()));
 		builder.append("\n");

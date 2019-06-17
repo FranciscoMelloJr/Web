@@ -28,17 +28,17 @@ public class VendaResource {
 		return ResponseEntity.ok().body(obj);
 	}
 
+	@RequestMapping(value = "/{clienteId}/cliente", method = RequestMethod.GET)
+	ResponseEntity<List<Venda>> findByCliente(@PathVariable Integer clienteId) {
+		List<Venda> list = service.findByCliente(clienteId);
+		return ResponseEntity.ok().body(list);
+	}
+
 	@RequestMapping(method = RequestMethod.POST)
 	public ResponseEntity<Void> insert(@RequestBody Venda obj) {
 		obj = service.insert(obj);
 		URI uri = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").buildAndExpand(obj.getId()).toUri();
 		return ResponseEntity.created(uri).build();
-	}
-
-	@RequestMapping(value = "/{clienteId}/cliente", method = RequestMethod.GET)
-	ResponseEntity<List<Venda>> findByCliente(@PathVariable Integer clienteId) {
-		List<Venda> list = service.findByCliente(clienteId);
-		return ResponseEntity.ok().body(list);
 	}
 
 }

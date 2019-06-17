@@ -1,5 +1,6 @@
 package br.unisul.farmacia.services;
 
+import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,4 +20,8 @@ public class ProdutoService {
 		return obj.orElse(null);
 	}
 
+	public List<Produto> findAll() {
+		return rep.findAll();
+	}
+	
 }

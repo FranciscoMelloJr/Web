@@ -16,7 +16,7 @@ public class ClienteDTO implements Serializable {
 	@Length(min = 4, max = 99, message = "O tamanho deve ser entre 4 e 99 caracteres")
 	private String nome;
 
-	private Integer saldoDevedor;
+	private Double saldoDevedor;
 
 	public ClienteDTO() {
 	}
@@ -43,11 +43,11 @@ public class ClienteDTO implements Serializable {
 		this.nome = nome;
 	}
 
-	public Integer getSaldoDevedor() {
+	public Double getSaldoDevedor() {
 		return saldoDevedor;
 	}
 
-	public void setSaldoDevedor(Integer saldoDevedor) {
+	public void setSaldoDevedor(Double saldoDevedor) {
 		this.saldoDevedor = saldoDevedor;
 	}
 }

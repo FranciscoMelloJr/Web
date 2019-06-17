@@ -21,7 +21,7 @@ public class Cliente implements Serializable {
 	private Integer id;
 
 	private String nome;
-	private Integer saldoDevedor;
+	private Double saldoDevedor;
 
 	@JsonIgnore
 	@OneToMany(mappedBy = "cliente")
@@ -30,7 +30,7 @@ public class Cliente implements Serializable {
 	public Cliente() {
 	}
 
-	public Cliente(Integer id, String nome, Integer saldoDevedor) {
+	public Cliente(Integer id, String nome, Double saldoDevedor) {
 		super();
 		this.id = id;
 		this.nome = nome;
@@ -61,11 +61,11 @@ public class Cliente implements Serializable {
 		this.nome = nome;
 	}
 
-	public Integer getSaldoDevedor() {
+	public Double getSaldoDevedor() {
 		return saldoDevedor;
 	}
 
-	public void setSaldoDevedor(Integer saldoDevedor) {
+	public void setSaldoDevedor(Double saldoDevedor) {
 		this.saldoDevedor = saldoDevedor;
 	}
 

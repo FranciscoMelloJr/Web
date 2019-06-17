@@ -41,8 +41,9 @@ public class VendaService {
 
 		for (ProdutoVenda ip : obj.getItens()) {
 			ip.setProduto(produtoService.find(ip.getProduto().getId()));
-			ip.setPreco(ip.getProduto().getValor());
-			ip.setPedido(obj);
+			ip.setValor(ip.getProduto().getValor());
+			ip.setVenda(obj);
+			obj.getCliente().setSaldoDevedor(obj.getCliente().getSaldoDevedor()+obj.getValorTotal()); 
 		}
 		produtoVendaRepository.saveAll(obj.getItens());
 		return obj;
