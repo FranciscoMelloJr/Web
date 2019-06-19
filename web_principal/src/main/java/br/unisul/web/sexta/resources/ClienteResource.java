@@ -27,14 +27,19 @@ public class ClienteResource {
 	@Autowired
 	private ClienteService service;
 
+	//Salvar
 	@RequestMapping(method = RequestMethod.POST)
 	public ResponseEntity<Void> insert(@Valid @RequestBody ClienteNewDTO objDto) {
+		//Conversão de ClienteDTO para Cliente
 		Cliente obj = service.fromDTO(objDto);
+		//Inserir
 		obj = service.insert(obj);
+		//Recuperar URL
 		URI uri = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").buildAndExpand(obj.getId()).toUri();
 		return ResponseEntity.created(uri).build();
 	}
 
+	//
 	@RequestMapping(value = "/{id}", method = RequestMethod.GET)
 	public ResponseEntity<?> find(@PathVariable Integer id) {
 		Cliente obj = service.find(id);

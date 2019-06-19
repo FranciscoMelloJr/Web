@@ -22,6 +22,7 @@ public class ProdutoVenda implements Serializable {
 	private Double valor;
 
 	public ProdutoVenda() {
+	
 	}
 
 	public ProdutoVenda(Venda venda, Produto produto, Integer quantidade) {
@@ -30,6 +31,10 @@ public class ProdutoVenda implements Serializable {
 		id.setProduto(produto);
 		this.quantidade = quantidade;
 		this.valor = produto.getValor();
+	}
+	
+	public void realizaVenda (ProdutoVendaPK id) {
+	
 		
 	}
 	

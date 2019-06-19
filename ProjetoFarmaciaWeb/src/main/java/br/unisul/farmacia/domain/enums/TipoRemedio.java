@@ -2,7 +2,7 @@ package br.unisul.farmacia.domain.enums;
 
 public enum TipoRemedio {
 
-	TARJA_PRETA(1, "Produto com tarja preta"), PRODUTO_SEM_TARJA(2, "Produto sem tarja");
+	PRODUTO_SEM_TARJA(1, "Produto sem tarja"), TARJA_PRETA(2, "Produto com tarja preta");
 
 	private int cod;
 	private String descricao;

@@ -23,8 +23,11 @@ public class ClienteService {
 	}
 
 	public Cliente update(Cliente obj) {
+		//Recupera o que está no banco de dados 
 		Cliente newObj = find(obj.getId());
+		//Troca apenas as atualizações sem anulação
 		updateData(newObj, obj);
+		//Salva e chama o objeto com os dados alterados
 		return repo.save(newObj);
 	}
 
@@ -38,7 +41,7 @@ public class ClienteService {
 	}
 
 	public Cliente fromDTO(ClienteDTO objDto) {
-		return new Cliente(objDto.getId(), objDto.getNome(), null, null);
+		return new Cliente(objDto.getId(), objDto.getNome(), objDto.getSaldoDevedor(), null);
 	}
 
 	private void updateData(Cliente newObj, Cliente obj) {
