@@ -13,6 +13,7 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import br.unisul.farmacia.domain.enums.TipoRemedio;
 
 @Entity
 public class Produto implements Serializable {
@@ -25,6 +26,7 @@ public class Produto implements Serializable {
 	private String nome;
 	private Integer estoque;
 	private Double valor;
+	private Integer tarja;
 
 	@JsonIgnore
 	@OneToMany(mappedBy = "id.produto")
@@ -34,15 +36,24 @@ public class Produto implements Serializable {
 
 	}
 
-	public Produto(Integer id, String nome, Integer estoque, Double valor) {
+	public Produto(Integer id, String nome, Integer estoque, Double valor, TipoRemedio tarja) {
 		super();
 		this.id = id;
 		this.nome = nome;
 		this.estoque = estoque;
 		this.valor = valor;
+		this.tarja = (tarja == null) ? null : tarja.getCod();
 	}
 
-	//Listar todos os pedidos em que o produto x foi vendido 
+	public TipoRemedio getTipo() {
+		return TipoRemedio.toEnum(tarja);
+	}
+
+	public void setTipo(TipoRemedio tipo) {
+		this.tarja = tipo.getCod();
+	}
+
+	// Listar todos os pedidos em que o produto x foi vendido
 	@JsonIgnore
 	public List<Venda> getPedidos() {
 		List<Venda> lista = new ArrayList<>();

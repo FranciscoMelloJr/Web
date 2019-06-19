@@ -25,6 +25,8 @@ public class Endereco implements Serializable {
 	private String bairro;
 	private String cep;
 
+	//Não busca todos os clientes do endereço
+	//Busca todos os endereços do cliente
 	@JsonIgnore
 	@ManyToOne
 	@JoinColumn(name = "cliente_id")

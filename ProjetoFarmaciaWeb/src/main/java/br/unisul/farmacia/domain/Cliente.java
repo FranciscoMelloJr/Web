@@ -12,6 +12,8 @@ import javax.persistence.OneToMany;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
+import br.unisul.farmacia.domain.enums.TipoCliente;
+
 @Entity
 public class Cliente implements Serializable {
 	private static final long serialVersionUID = 1L;
@@ -22,6 +24,7 @@ public class Cliente implements Serializable {
 
 	private String nome;
 	private Double saldoDevedor;
+	private Integer tipo;
 
 	@JsonIgnore
 	@OneToMany(mappedBy = "cliente")
@@ -30,11 +33,20 @@ public class Cliente implements Serializable {
 	public Cliente() {
 	}
 
-	public Cliente(Integer id, String nome, Double saldoDevedor) {
+	public Cliente(Integer id, String nome, Double saldoDevedor, TipoCliente tipo) {
 		super();
 		this.id = id;
 		this.nome = nome;
 		this.saldoDevedor = saldoDevedor;
+		this.tipo = (tipo == null) ? null : tipo.getCod();
+	}
+	
+	public TipoCliente getTipo() {
+		return TipoCliente.toEnum(tipo);
+	}
+
+	public void setTipo(TipoCliente tipo) {
+		this.tipo = tipo.getCod();
 	}
 
 	public List<Venda> getVendas() {

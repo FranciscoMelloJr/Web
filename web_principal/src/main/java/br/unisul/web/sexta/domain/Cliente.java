@@ -36,6 +36,7 @@ public class Cliente implements Serializable {
 
 	@ElementCollection
 	@CollectionTable(name = "TELEFONE")
+	// Set tem alguns controles a mais que o ArrayList
 	private Set<String> telefones = new HashSet<>();
 
 	@JsonIgnore
