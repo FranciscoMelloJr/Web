@@ -36,11 +36,14 @@ public class AlunoResource {
 		}
 		return ResponseEntity.ok().body(listDto);
 	}
+
+	@RequestMapping(value = "/{id}", method = RequestMethod.GET)
+	public ResponseEntity<?> find(@PathVariable Integer id) {
+		Aluno obj = service.find(id);
+		return ResponseEntity.ok().body(obj);
+	}
+
 	/*
-	 * @RequestMapping(value = "/{id}", method = RequestMethod.GET) public
-	 * ResponseEntity<?> find(@PathVariable Integer id) { Aluno obj =
-	 * service.find(id); return ResponseEntity.ok().body(obj); }
-	 * 
 	 * @RequestMapping(method = RequestMethod.POST) public ResponseEntity<Void>
 	 * insert(@Valid @RequestBody AlunoInsertDTO objDto) { Aluno obj =
 	 * service.fromDTO(objDto); obj = service.insert(obj); URI uri =

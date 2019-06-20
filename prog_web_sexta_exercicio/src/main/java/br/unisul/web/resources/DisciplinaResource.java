@@ -30,11 +30,14 @@ public class DisciplinaResource {
 		List<DisciplinaDTO> listaDTO = lista.stream().map(obj -> new DisciplinaDTO(obj)).collect(Collectors.toList());
 		return ResponseEntity.ok().body(listaDTO);
 	}
+
+	@RequestMapping(value = "/{id}", method = RequestMethod.GET)
+	public ResponseEntity<Disciplina> find(@PathVariable Integer id) {
+		Disciplina obj = service.find(id);
+		return ResponseEntity.ok().body(obj);
+	}
+
 	/*
-	 * @RequestMapping(value = "/{id}", method = RequestMethod.GET) public
-	 * ResponseEntity<Disciplina> find(@PathVariable Integer id) { Disciplina obj =
-	 * service.find(id); return ResponseEntity.ok().body(obj); }
-	 * 
 	 * @RequestMapping(value = "/{id}", method = RequestMethod.PUT) public
 	 * ResponseEntity<Void> update(@RequestBody Disciplina obj, @PathVariable
 	 * Integer id) { obj.setId(id); obj = service.update(obj); return
