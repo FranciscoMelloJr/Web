@@ -81,13 +81,13 @@ public class DbService {
 				"08976959570", TipoCliente.PESSOAFISICA);
 		cli1.getTelefones().addAll(Arrays.asList("4832556698", "48996555266"));
 
-		Endereco en1 = new Endereco(null, "Rosangela Machado ", "110", "Apto 101", "Vila Nova", "88780000", cli1, c2);
-		Endereco en2 = new Endereco(null, "Francisco Mello", "120", "Casa", "Centro", "88780000", cli1, c3);
+		Endereco en1 = new Endereco(null, "Rua São Sebastião ", "225", "Casa", "Vila Nova", "88780-000", cli1, c2);
+		Endereco en2 = new Endereco(null, "Avenida Estrela", "S/N", "Casa", "Vila Nova", "88780000", cli1, c3);
 		cli1.getEnderecos().addAll(Arrays.asList(en1, en2));
 
 		estRep.saveAll(Arrays.asList(e1, e2, e3));
 		cidRep.saveAll(Arrays.asList(c1, c2, c3, c4, c5, c6));
-
+		
 		clieRep.saveAll(Arrays.asList(cli1));
 		endRep.saveAll(Arrays.asList(en1, en2));
 
