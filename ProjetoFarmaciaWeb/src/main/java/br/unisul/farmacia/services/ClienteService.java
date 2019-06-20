@@ -8,7 +8,9 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import br.unisul.farmacia.domain.Cliente;
+import br.unisul.farmacia.domain.enums.TipoCliente;
 import br.unisul.farmacia.dtos.ClienteDTO;
+import br.unisul.farmacia.dtos.ClienteInsertDTO;
 import br.unisul.farmacia.repositories.ClienteRepository;
 
 @Service
@@ -44,6 +46,10 @@ public class ClienteService {
 		return new Cliente(objDto.getId(), objDto.getNome(), objDto.getSaldoDevedor(), null);
 	}
 
+	public Cliente fromDTO(ClienteInsertDTO objDto) {
+		return new Cliente(null, objDto.getNome(), objDto.getSaldoDevedor(), TipoCliente.toEnum(objDto.getTipo())); 
+	}
+	
 	private void updateData(Cliente newObj, Cliente obj) {
 		newObj.setNome(obj.getNome());
 	}
