@@ -21,18 +21,24 @@ public class ClienteService {
 
 	@Autowired
 	private ClienteRepository repo;
-
+	//Mesmo service para cliente e endereço
 	@Autowired
 	private EnderecoRepository enderecoRepository;
 
+	//Localizar pelo código
 	public Cliente find(Integer id) {
 		Optional<Cliente> obj = repo.findById(id);
 		return obj.orElse(null);
 	}
 
+	//Recebe o objeto Cliente
+	//Sempre com o dominio.
 	public Cliente update(Cliente obj) {
+		//Recupera o que está no banco de dados 
 		Cliente newObj = find(obj.getId());
+		//Troca apenas as atualizações sem anulação
 		updateData(newObj, obj);
+		//Salva e chama o objeto com os dados alterados
 		return repo.save(newObj);
 	}
 

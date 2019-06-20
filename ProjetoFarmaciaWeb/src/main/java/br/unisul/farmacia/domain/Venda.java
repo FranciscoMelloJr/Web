@@ -33,7 +33,6 @@ public class Venda implements Serializable {
 	@JoinColumn(name = "cliente_id")
 	private Cliente cliente;
 	
-	//Chave composta//
 	@OneToMany(mappedBy = "id.venda")
 	private Set<ProdutoVenda> itens = new HashSet<>();
 
@@ -47,7 +46,6 @@ public class Venda implements Serializable {
 		this.cliente = cliente;
 	}
 
-	//Não é um atributo; Valor total não está no pedido// 
 	public double getValorTotal() {
 		double soma = 0.0;
 		for (ProdutoVenda ip : itens) {
@@ -116,11 +114,8 @@ public class Venda implements Serializable {
 	
 	@Override
 	public String toString() {
-		//Determina o padrão do número
 		NumberFormat nf = NumberFormat.getCurrencyInstance(new Locale("pt", "BR"));
-		//Formata a data e hora do pedido
 		SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
-		//Retorna todos os dados do pedido concatenando string sem realocar em memória
 		StringBuilder builder = new StringBuilder();
 		builder.append("Pedido número: ");
 		builder.append(getId());

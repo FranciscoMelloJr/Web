@@ -53,7 +53,6 @@ public class Produto implements Serializable {
 		this.tarja = tipo.getCod();
 	}
 
-	// Listar todos os pedidos em que o produto x foi vendido
 	@JsonIgnore
 	public List<Venda> getPedidos() {
 		List<Venda> lista = new ArrayList<>();

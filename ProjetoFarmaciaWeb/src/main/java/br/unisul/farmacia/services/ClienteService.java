@@ -25,11 +25,9 @@ public class ClienteService {
 	}
 
 	public Cliente update(Cliente obj) {
-		//Recupera o que está no banco de dados 
 		Cliente newObj = find(obj.getId());
-		//Troca apenas as atualizações sem anulação
 		updateData(newObj, obj);
-		//Salva e chama o objeto com os dados alterados
+
 		return repo.save(newObj);
 	}
 
