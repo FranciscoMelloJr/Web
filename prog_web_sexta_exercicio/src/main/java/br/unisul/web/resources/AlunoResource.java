@@ -17,6 +17,7 @@ import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import br.unisul.web.domain.Aluno;
 import br.unisul.web.dtos.AlunoDTO;
+import br.unisul.web.dtos.AlunoInsertDTO;
 import br.unisul.web.services.AlunoService;
 
 @RestController
@@ -26,15 +27,22 @@ public class AlunoResource {
 	@Autowired
 	private AlunoService service;
 
-	@RequestMapping(value = "/{id}", method = RequestMethod.GET)
-	public ResponseEntity<?> find(@PathVariable Integer id) {
-		Aluno obj = service.find(id);
-		return ResponseEntity.ok().body(obj);
+	@RequestMapping(method = RequestMethod.GET)
+	public ResponseEntity<List<AlunoDTO>> findAll() {
+		List<Aluno> list = service.findAll();
+		List<AlunoDTO> listDto = new ArrayList<AlunoDTO>();
+		for (Aluno a : list) {
+			listDto.add(new AlunoDTO(a));
+		}
+		return ResponseEntity.ok().body(listDto);
 	}
-
 	/*
+	 * @RequestMapping(value = "/{id}", method = RequestMethod.GET) public
+	 * ResponseEntity<?> find(@PathVariable Integer id) { Aluno obj =
+	 * service.find(id); return ResponseEntity.ok().body(obj); }
+	 * 
 	 * @RequestMapping(method = RequestMethod.POST) public ResponseEntity<Void>
-	 * insert(@Valid @RequestBody AlunoDTO objDto) { Aluno obj =
+	 * insert(@Valid @RequestBody AlunoInsertDTO objDto) { Aluno obj =
 	 * service.fromDTO(objDto); obj = service.insert(obj); URI uri =
 	 * ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").buildAndExpand
 	 * (obj.getId()).toUri(); return ResponseEntity.created(uri).build(); }
@@ -48,12 +56,5 @@ public class AlunoResource {
 	 * @RequestMapping(value = "/{id}", method = RequestMethod.DELETE) public
 	 * ResponseEntity<Void> delete(@PathVariable Integer id) { service.delete(id);
 	 * return ResponseEntity.noContent().build(); }
-	 * 
-	 * @RequestMapping(method = RequestMethod.GET) public
-	 * ResponseEntity<List<AlunoDTO>> findAll() { List<Aluno> list =
-	 * service.findAll(); List<AlunoDTO> listDto = new ArrayList<AlunoDTO>(); for
-	 * (Aluno a : list) { listDto.add(new AlunoDTO(a)); } return
-	 * ResponseEntity.ok().body(listDto); }
 	 */
-
 }

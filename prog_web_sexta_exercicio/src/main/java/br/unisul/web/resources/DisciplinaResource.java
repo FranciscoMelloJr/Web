@@ -24,42 +24,29 @@ public class DisciplinaResource {
 	@Autowired
 	private DisciplinaService service;
 
-	// BUSCAR POR ID
-	@RequestMapping(value = "/{id}", method = RequestMethod.GET)
-	public ResponseEntity<Disciplina> find(@PathVariable Integer id) {
-		Disciplina obj = service.find(id);
-		return ResponseEntity.ok().body(obj);
-	}
-
-	// INSERIR
-	@RequestMapping(method = RequestMethod.POST)
-	public ResponseEntity<Void> insert(@RequestBody Disciplina obj) {
-		obj = service.insert(obj);
-		URI uri = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").buildAndExpand(obj.getId()).toUri();
-		return ResponseEntity.created(uri).build();
-	}
-
-	// ATUALIZAR
-	@RequestMapping(value = "/{id}", method = RequestMethod.PUT)
-	public ResponseEntity<Void> update(@RequestBody Disciplina obj, @PathVariable Integer id) {
-		obj.setId(id);
-		obj = service.update(obj);
-		return ResponseEntity.noContent().build();
-	}
-
-	// EXCLUIR
-	@RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
-	public ResponseEntity<Void> delete(@PathVariable Integer id) {
-		service.delete(id);
-		return ResponseEntity.noContent().build();
-	}
-
-	// LISTAR TODAS
 	@RequestMapping(method = RequestMethod.GET)
 	public ResponseEntity<List<DisciplinaDTO>> findAll() {
 		List<Disciplina> lista = service.findAll();
 		List<DisciplinaDTO> listaDTO = lista.stream().map(obj -> new DisciplinaDTO(obj)).collect(Collectors.toList());
 		return ResponseEntity.ok().body(listaDTO);
 	}
-
+	/*
+	 * @RequestMapping(value = "/{id}", method = RequestMethod.GET) public
+	 * ResponseEntity<Disciplina> find(@PathVariable Integer id) { Disciplina obj =
+	 * service.find(id); return ResponseEntity.ok().body(obj); }
+	 * 
+	 * @RequestMapping(value = "/{id}", method = RequestMethod.PUT) public
+	 * ResponseEntity<Void> update(@RequestBody Disciplina obj, @PathVariable
+	 * Integer id) { obj.setId(id); obj = service.update(obj); return
+	 * ResponseEntity.noContent().build(); }
+	 * 
+	 * @RequestMapping(method = RequestMethod.POST) public ResponseEntity<Void>
+	 * insert(@RequestBody Disciplina obj) { obj = service.insert(obj); URI uri =
+	 * ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").buildAndExpand
+	 * (obj.getId()).toUri(); return ResponseEntity.created(uri).build(); }
+	 * 
+	 * @RequestMapping(value = "/{id}", method = RequestMethod.DELETE) public
+	 * ResponseEntity<Void> delete(@PathVariable Integer id) { service.delete(id);
+	 * return ResponseEntity.noContent().build(); }
+	 */
 }

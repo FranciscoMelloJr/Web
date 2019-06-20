@@ -2,8 +2,12 @@ package br.unisul.web.domain;
 
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
+import javax.persistence.CollectionTable;
+import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -13,6 +17,8 @@ import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+
+import br.unisul.web.domain.enums.TipoAluno;
 
 @Entity
 public class Aluno implements Serializable {
@@ -24,8 +30,12 @@ public class Aluno implements Serializable {
 	private Integer id;
 	
 	private String nome;
-	private String email;
-
+	private Integer tipo;
+	
+	@ElementCollection
+	@CollectionTable(name = "EMAIL")
+	private Set<String> emails = new HashSet<>();
+	
 	@JsonIgnore
 	@ManyToMany
 	@JoinTable(name = "ALUNO_DISCIPLINA", joinColumns = @JoinColumn(name = "aluno_id"), inverseJoinColumns = @JoinColumn(name = "disciplina_id"))
@@ -34,11 +44,11 @@ public class Aluno implements Serializable {
 	public Aluno() {
 	}
 
-	public Aluno(Integer id, String nome, String email) {
+	public Aluno(Integer id, String nome, TipoAluno tipo) {
 		super();
 		this.id = id;
 		this.nome = nome;
-		this.email = email;
+		this.tipo = (tipo == null) ? null : tipo.getCod();
 	}
 
 	public Integer getId() {
@@ -57,14 +67,6 @@ public class Aluno implements Serializable {
 		this.nome = nome;
 	}
 
-	public String getEmail() {
-		return email;
-	}
-
-	public void setEmail(String email) {
-		this.email = email;
-	}
-
 	public List<Disciplina> getDisciplinas() {
 		return disciplinas;
 	}
@@ -72,9 +74,21 @@ public class Aluno implements Serializable {
 	public void setDisciplinas(List<Disciplina> disciplinas) {
 		this.disciplinas = disciplinas;
 	}
+	
+	public TipoAluno getTipo() {
+		return TipoAluno.toEnum(tipo);
+	}
 
-	public static long getSerialversionuid() {
-		return serialVersionUID;
+	public void setTipo(TipoAluno tipo) {
+		this.tipo = tipo.getCod();
+	}
+
+	public Set<String> getEmails() {
+		return emails;
+	}
+
+	public void setEmails(Set<String> emails) {
+		this.emails = emails;
 	}
 
 	@Override

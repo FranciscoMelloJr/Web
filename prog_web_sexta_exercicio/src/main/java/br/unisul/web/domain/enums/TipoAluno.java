@@ -2,7 +2,7 @@ package br.unisul.web.domain.enums;
 
 public enum TipoAluno {
 
-	ADULTO(1, "Universitário"), ADOLECENTE(2, "Ensino Médio");
+	INFANTIL(1, "Ensinio Fundamental"), ADOLESCENTE(2, "Ensino Médio");
 
 	private int cod;
 	private String descricao;

@@ -26,7 +26,7 @@ public class Disciplina implements Serializable {
 	public Disciplina() {
 
 	}
-	//Inserir alunos array List //
+	//Inserir alunos array List
 	public Disciplina(Integer id, String nome, String semestre) {
 		this.id = id;
 		this.nome = nome;
