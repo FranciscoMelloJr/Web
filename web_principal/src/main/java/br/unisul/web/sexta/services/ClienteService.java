@@ -51,10 +51,12 @@ public class ClienteService {
 		return repo.findAll();
 	}
 
+	//Conversão de ClienteDTO para Cliente
 	public Cliente fromDTO(ClienteDTO objDto) {
 		return new Cliente(objDto.getId(), objDto.getNome(), objDto.getEmail(), null, null);
 	}
 
+	//Conversão de ClienteNewDTO para Cliente
 	public Cliente fromDTO(ClienteNewDTO objDto) {
 		Cliente cli = new Cliente(null, objDto.getNome(), objDto.getEmail(), objDto.getCpfOuCnpj(),
 				TipoCliente.toEnum(objDto.getTipo()));

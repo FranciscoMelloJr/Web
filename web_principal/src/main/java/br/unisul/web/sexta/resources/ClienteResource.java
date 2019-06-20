@@ -29,6 +29,7 @@ public class ClienteResource {
 
 	//Salvar
 	@RequestMapping(method = RequestMethod.POST)
+	//Enviar no body ou Postman ClienteNewDTO
 	public ResponseEntity<Void> insert(@Valid @RequestBody ClienteNewDTO objDto) {
 		//Conversão de ClienteDTO para Cliente
 		Cliente obj = service.fromDTO(objDto);
@@ -39,13 +40,14 @@ public class ClienteResource {
 		return ResponseEntity.created(uri).build();
 	}
 
-	//
+	//Buscar por código
 	@RequestMapping(value = "/{id}", method = RequestMethod.GET)
 	public ResponseEntity<?> find(@PathVariable Integer id) {
 		Cliente obj = service.find(id);
 		return ResponseEntity.ok().body(obj);
 	}
 
+	//Alterar
 	@RequestMapping(value = "/{id}", method = RequestMethod.PUT)
 	public ResponseEntity<Void> update(@Valid @RequestBody ClienteDTO objDto, @PathVariable Integer id) {
 		Cliente obj = service.fromDTO(objDto);
@@ -60,6 +62,7 @@ public class ClienteResource {
 		return ResponseEntity.noContent().build();
 	}
 
+	//Lista DTO
 	@RequestMapping(method = RequestMethod.GET)
 	public ResponseEntity<List<ClienteDTO>> findAll() {
 		List<Cliente> list = service.findAll();
