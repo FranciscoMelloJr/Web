@@ -24,6 +24,10 @@ public class ClienteService {
 		return obj.orElse(null);
 	}
 
+	public List<Cliente> findAll() {
+		return repo.findAll();
+	}
+
 	public Cliente update(Cliente obj) {
 		Cliente newObj = find(obj.getId());
 		updateData(newObj, obj);
@@ -36,9 +40,6 @@ public class ClienteService {
 		repo.deleteById(id);
 	}
 
-	public List<Cliente> findAll() {
-		return repo.findAll();
-	}
 
 	public Cliente fromDTO(ClienteDTO objDto) {
 		return new Cliente(objDto.getId(), objDto.getNome(), objDto.getSaldoDevedor(), null);
