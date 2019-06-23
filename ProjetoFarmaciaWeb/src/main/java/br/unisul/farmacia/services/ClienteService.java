@@ -42,11 +42,11 @@ public class ClienteService {
 
 
 	public Cliente fromDTO(ClienteDTO objDto) {
-		return new Cliente(objDto.getId(), objDto.getNome(), objDto.getSaldoDevedor(), null);
+		return new Cliente(objDto.getId(), objDto.getNome(), null);
 	}
 
 	public Cliente fromDTO(ClienteInsertDTO objDto) {
-		return new Cliente(null, objDto.getNome(), objDto.getSaldoDevedor(), TipoCliente.toEnum(objDto.getTipo())); 
+		return new Cliente(null, objDto.getNome(), TipoCliente.toEnum(objDto.getTipo())); 
 	}
 	
 	private void updateData(Cliente newObj, Cliente obj) {

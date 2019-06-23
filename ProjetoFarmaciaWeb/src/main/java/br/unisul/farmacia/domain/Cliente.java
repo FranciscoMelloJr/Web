@@ -33,11 +33,11 @@ public class Cliente implements Serializable {
 	public Cliente() {
 	}
 
-	public Cliente(Integer id, String nome, Double saldoDevedor, TipoCliente tipo) {
+	public Cliente(Integer id, String nome, TipoCliente tipo) {
 		super();
 		this.id = id;
 		this.nome = nome;
-		this.saldoDevedor = saldoDevedor;
+		this.saldoDevedor = 0.0;
 		this.tipo = (tipo == null) ? null : tipo.getCod();
 	}
 	

@@ -35,9 +35,9 @@ public class DbService {
 
 	public void inicializaBancoDeDados() throws ParseException {
 
-		Cliente cli1 = new Cliente(null, "Francisco Mello", 0.0, TipoCliente.CLIENTE_COM_RECEITA);
-		Cliente cli2 = new Cliente(null, "Gustavo Casagrande", 0.0, TipoCliente.CLIENTE_SEM_RECEITA);
-		Cliente cli3 = new Cliente(null, "Luana Silveira", 0.0, TipoCliente.CLIENTE_SEM_RECEITA);
+		Cliente cli1 = new Cliente(null, "Francisco Mello",TipoCliente.CLIENTE_COM_RECEITA);
+		Cliente cli2 = new Cliente(null, "Gustavo Casagrande",TipoCliente.CLIENTE_SEM_RECEITA);
+		Cliente cli3 = new Cliente(null, "Luana Silveira",TipoCliente.CLIENTE_SEM_RECEITA);
 
 		Produto p1 = new Produto(null, "Paracetamol", 200, 9.90, TipoRemedio.PRODUTO_SEM_TARJA);
 		Produto p2 = new Produto(null, "Dipirona", 150, 4.90, TipoRemedio.PRODUTO_SEM_TARJA);
