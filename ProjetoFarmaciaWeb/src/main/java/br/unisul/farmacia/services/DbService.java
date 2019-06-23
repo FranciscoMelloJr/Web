@@ -35,10 +35,12 @@ public class DbService {
 
 	public void inicializaBancoDeDados() throws ParseException {
 
+		//Meus clientes iniciais
 		Cliente cli1 = new Cliente(null, "Francisco Mello",TipoCliente.CLIENTE_COM_RECEITA);
 		Cliente cli2 = new Cliente(null, "Gustavo Casagrande",TipoCliente.CLIENTE_SEM_RECEITA);
 		Cliente cli3 = new Cliente(null, "Luana Silveira",TipoCliente.CLIENTE_SEM_RECEITA);
-
+		
+		//Meus produtos iniciais
 		Produto p1 = new Produto(null, "Paracetamol", 200, 9.90, TipoRemedio.PRODUTO_SEM_TARJA);
 		Produto p2 = new Produto(null, "Dipirona", 150, 4.90, TipoRemedio.PRODUTO_SEM_TARJA);
 		Produto p3 = new Produto(null, "Cimetidina", 100, 7.50, TipoRemedio.PRODUTO_SEM_TARJA);
@@ -54,27 +56,33 @@ public class DbService {
 
 		SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy HH:mm");
 
+		//Minha vendas já cadastradas de cada cliente
 		Venda venda1 = new Venda(null, sdf.parse("05/06/2019 08:47"), cli3);
 		Venda venda2 = new Venda(null, sdf.parse("10/06/2019 10:35"), cli2);
 		Venda venda3 = new Venda(null, sdf.parse("15/06/2019 12:35"), cli1);
 
+		//Registra a venda para tal cliente respectivamente
 		cli1.getVendas().addAll(Arrays.asList(venda3));
 		cli2.getVendas().addAll(Arrays.asList(venda2));
 		cli3.getVendas().addAll(Arrays.asList(venda1));
 		vendaRepository.saveAll(Arrays.asList(venda1, venda2, venda3));
 
+		//Define os produtos para tal venda
+		ProdutoVenda produtovenda0 = new ProdutoVenda(venda1, p1, 1);
 		ProdutoVenda produtovenda1 = new ProdutoVenda(venda1, p3, 3);
 		ProdutoVenda produtovenda2 = new ProdutoVenda(venda2, p2, 2);
 		ProdutoVenda produtovenda3 = new ProdutoVenda(venda3, p1, 1);
 
-		venda1.getItens().addAll(Arrays.asList(produtovenda1));
+		//Define os produtos da venda respectivamente
+		venda1.getItens().addAll(Arrays.asList(produtovenda0,produtovenda1));
 		venda2.getItens().addAll(Arrays.asList(produtovenda2));
 		venda3.getItens().addAll(Arrays.asList(produtovenda3));
-
-		p1.getItens().addAll(Arrays.asList(produtovenda3));
+		
+		//Informa a classe produto sobre a venda
+		p1.getItens().addAll(Arrays.asList(produtovenda0,produtovenda3));
 		p2.getItens().addAll(Arrays.asList(produtovenda2));
 		p3.getItens().addAll(Arrays.asList(produtovenda1));
 
-		produtoVendaRepository.saveAll(Arrays.asList(produtovenda1, produtovenda2, produtovenda3));
+		produtoVendaRepository.saveAll(Arrays.asList(produtovenda0,produtovenda1, produtovenda2, produtovenda3));
 	}
 }
