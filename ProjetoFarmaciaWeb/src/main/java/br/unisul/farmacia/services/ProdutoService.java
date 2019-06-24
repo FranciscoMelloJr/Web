@@ -49,6 +49,8 @@ public class ProdutoService {
 	
 	private void updateData(Produto newObj, Produto obj) {
 		newObj.setNome(obj.getNome());
+		newObj.setEstoque(obj.getEstoque());
+		newObj.setValor(obj.getValor());
 	}
 	
 	@Transactional

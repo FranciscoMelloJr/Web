@@ -45,12 +45,12 @@ public class Produto implements Serializable {
 		this.tarja = (tarja == null) ? null : tarja.getCod();
 	}
 
-	public TipoRemedio getTipo() {
+	public TipoRemedio getTarja() {
 		return TipoRemedio.toEnum(tarja);
 	}
 
-	public void setTipo(TipoRemedio tipo) {
-		this.tarja = tipo.getCod();
+	public void setTarja(TipoRemedio tarja) {
+		this.tarja = tarja.getCod();
 	}
 
 	@JsonIgnore
