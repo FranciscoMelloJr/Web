@@ -17,4 +17,14 @@ public class CidadeService {
 	public List<Cidade> findByEstado(Integer estadoId) {
 		return rep.findCidades(estadoId);
 	}
+	
+	public List<Cidade> findAll() {
+		return rep.findAllByOrderByNome();
+	}
+	
+	public Cidade insert(Cidade obj) {
+		obj.setId(null);
+		return rep.save(obj);
+	}
 }
+

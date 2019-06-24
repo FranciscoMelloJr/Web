@@ -4,22 +4,22 @@ import java.io.Serializable;
 
 import br.unisul.web.sexta.domain.Categoria;
 
-public class CategoriaDto implements Serializable {
+public class CategoriaDTO implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	private Integer id;
 	private String nome;
 
-	public CategoriaDto(Categoria c) {
+	public CategoriaDTO(Categoria c) {
 		id = c.getId();
 		nome = c.getNome();
 	}
 
-	public CategoriaDto() {
+	public CategoriaDTO() {
 
 	}
 
-	public CategoriaDto(Integer id, String nome) {
+	public CategoriaDTO(Integer id, String nome) {
 		this.id = id;
 		this.nome = nome;
 	}
@@ -56,7 +56,7 @@ public class CategoriaDto implements Serializable {
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		CategoriaDto other = (CategoriaDto) obj;
+		CategoriaDTO other = (CategoriaDTO) obj;
 		if (id == null) {
 			if (other.id != null)
 				return false;

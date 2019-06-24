@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import br.unisul.web.sexta.domain.Categoria;
-import br.unisul.web.sexta.dtos.CategoriaDto;
+import br.unisul.web.sexta.dtos.CategoriaDTO;
 import br.unisul.web.sexta.services.CategoriaService;
 
 @RestController
@@ -56,13 +56,13 @@ public class CategoriaResource {
 
 	// LISTAR TODAS
 	@RequestMapping(method = RequestMethod.GET)
-	public ResponseEntity<List<CategoriaDto>> findAll() {
+	public ResponseEntity<List<CategoriaDTO>> findAll() {
 		List<Categoria> lista = service.findAll();
 
-		List<CategoriaDto> listDto = new ArrayList<CategoriaDto>();
+		List<CategoriaDTO> listDto = new ArrayList<CategoriaDTO>();
 
 		for (Categoria c : lista) {
-			listDto.add(new CategoriaDto(c));
+			listDto.add(new CategoriaDTO(c));
 		}
 
 		return ResponseEntity.ok().body(listDto);
