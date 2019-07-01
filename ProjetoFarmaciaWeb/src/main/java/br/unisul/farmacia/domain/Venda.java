@@ -32,7 +32,7 @@ public class Venda implements Serializable {
 	@ManyToOne
 	@JoinColumn(name = "cliente_id")
 	private Cliente cliente;
-	
+
 	@OneToMany(mappedBy = "id.venda")
 	private Set<ProdutoVenda> itens = new HashSet<>();
 
@@ -44,6 +44,14 @@ public class Venda implements Serializable {
 		this.id = id;
 		this.instante = instante;
 		this.cliente = cliente;
+	}
+	
+	public Venda(Integer id, Date instante, Cliente cliente, Set<ProdutoVenda> itens) {
+		super();
+		this.id = id;
+		this.instante = instante;
+		this.cliente = cliente;
+		this.itens = itens;
 	}
 
 	public double getValorTotal() {
@@ -110,8 +118,7 @@ public class Venda implements Serializable {
 			return false;
 		return true;
 	}
-	
-	
+
 	@Override
 	public String toString() {
 		NumberFormat nf = NumberFormat.getCurrencyInstance(new Locale("pt", "BR"));

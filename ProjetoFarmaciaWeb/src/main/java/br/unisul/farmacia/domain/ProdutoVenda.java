@@ -33,11 +33,6 @@ public class ProdutoVenda implements Serializable {
 		this.valor = produto.getValor();
 	}
 	
-	public void realizaVenda (ProdutoVendaPK id) {
-	
-		
-	}
-	
 	public double getSubTotal() {
 		return (valor) * quantidade;
 	}
