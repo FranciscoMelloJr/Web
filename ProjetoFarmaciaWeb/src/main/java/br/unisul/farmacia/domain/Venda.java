@@ -56,8 +56,8 @@ public class Venda implements Serializable {
 
 	public double getValorTotal() {
 		double soma = 0.0;
-		for (ProdutoVenda ip : itens) {
-			soma = soma + ip.getSubTotal();
+		for (ProdutoVenda pv : itens) {
+			soma = soma + pv.getSubTotal();
 		}
 		return soma;
 	}

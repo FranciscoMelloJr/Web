@@ -13,7 +13,6 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 public class ProdutoVenda implements Serializable {
 	private static final long serialVersionUID = 1L;
 
-	
 	@JsonIgnore
 	@EmbeddedId
 	private ProdutoVendaPK id = new ProdutoVendaPK();
@@ -22,19 +21,19 @@ public class ProdutoVenda implements Serializable {
 	private Double valor;
 
 	public ProdutoVenda() {
-	
+
 	}
 
-	public ProdutoVenda(Venda venda, Produto produto, Integer quantidade) {
+	public ProdutoVenda(Venda venda, Produto produto, Integer quantidade, Double valor) {
 		super();
 		id.setVenda(venda);
 		id.setProduto(produto);
 		this.quantidade = quantidade;
-		this.valor = produto.getValor();
+		this.valor = valor;
 	}
-	
+
 	public double getSubTotal() {
-		return (valor) * quantidade;
+		return (valor * quantidade);
 	}
 
 	@JsonIgnore
